@@ -8,7 +8,7 @@ import os
 import threading
 import platform
 
-version = 'v1.0.1'
+version = 'v1.0.2'
 
 class Set:
     def __init__(self):
@@ -49,12 +49,12 @@ class MainExerciseWindow:
 
         # labels
 
-        self.setnamelabel = ttk.Label(topframe, text='Set name')
-        self.exercisenamelabel = ttk.Label(leftframe, text='Exercise name')
+        self.setnamelabel = ttk.Label(topframe, text='Program name')
+        self.exercisenamelabel = ttk.Label(leftframe, text='Set name')
         self.weightlabel = ttk.Label(leftframe, text='Weight')
         self.replabel = ttk.Label(leftframe, text='Reps')
-        self.exercisenumberlabel = ttk.Label(leftframe, text='Exercise 0/0')
-        self.setnumberlabel = ttk.Label(leftframe, text='Sets complete : 0')
+        self.exercisenumberlabel = ttk.Label(leftframe, text='Set 0/0')
+        self.setnumberlabel = ttk.Label(leftframe, text='Circuits complete : 0')
         timeelapsedlabel = ttk.Label(bottomframe, text='Time elapsed')
         self.stopwatchlabel = ttk.Label(bottomframe, text='0:00')
 
@@ -72,7 +72,7 @@ class MainExerciseWindow:
         # Menu bar
 
         self.menubar = tkinter.Menu(root)
-        self.menubar.add_command(label='Sets', command=self.opensetwindow)
+        self.menubar.add_command(label='Programs', command=self.opensetwindow)
         self.menubar.add_command(label='About', command=self.about)
         root.config(menu=self.menubar)
 
@@ -122,8 +122,8 @@ class MainExerciseWindow:
         self.exercisenamelabel.config(text=newexercise[0])
         self.weightlabel.config(text=f'Weight : {newexercise[1]}')
         self.replabel.config(text=f'Reps : {newexercise[2]}')
-        self.exercisenumberlabel.config(text=f'Exercise {currentset.currentnumber + 1}/{len(currentset.set.exercises)}')
-        self.setnumberlabel.config(text=f'Sets complete : {currentset.completesets}')
+        self.exercisenumberlabel.config(text=f'Set {currentset.currentnumber + 1}/{len(currentset.set.exercises)}')
+        self.setnumberlabel.config(text=f'Circuits complete : {currentset.completesets}')
 
     def startstop(self):
         global exerciseon
@@ -200,12 +200,12 @@ class MainExerciseWindow:
         self.weightbox.config(state=tkinter.DISABLED)
         self.weightvar.set('')
         self.donebutton.config(text='Start', state=tkinter.DISABLED)
-        self.menubar.entryconfig('Sets', state=tkinter.DISABLED)
+        self.menubar.entryconfig('Programs', state=tkinter.DISABLED)
         self.menubar.entryconfig('About', state=tkinter.DISABLED)
 
     def reactivate(self):
         self.donebutton.config(state=tkinter.NORMAL)
-        self.menubar.entryconfig('Sets', state=tkinter.NORMAL)
+        self.menubar.entryconfig('Programs', state=tkinter.NORMAL)
         self.menubar.entryconfig('About', state=tkinter.NORMAL)
 
     def about(self):
@@ -235,7 +235,7 @@ class SetSelectWindow:
     def __init__(self, root):
         self.setwin = tkinter.Toplevel(root)
         self.setwin.protocol('WM_DELETE_WINDOW', self.closewindow)
-        self.setwin.title('Select set')
+        self.setwin.title('Select program')
         self.setwin.minsize(259, 254)
         self.setwin.maxsize(259, 254)
 
@@ -379,7 +379,7 @@ class NewSetWindow:
             try:
                 setwindow.reactivate()
             except tkinter.TclError:
-                print('Could not find set menu when closing.')
+                print('Could not find program menu when closing.')
             finally:
                 self.editwin.destroy()
 
@@ -402,16 +402,16 @@ class NewSetWindow:
         self.repbox = ttk.Entry(rightframe, textvariable=self.repvar, validate='key')
 
         # Labels
-        self.setnamelabel = ttk.Label(topframe, text='Set title')
-        self.exercisenamelabel = ttk.Label(rightframe, text='Exercise name')
+        self.setnamelabel = ttk.Label(topframe, text='Program title')
+        self.exercisenamelabel = ttk.Label(rightframe, text='Set name')
         self.weightlabel = ttk.Label(rightframe, text='Weight')
         self.replabel = ttk.Label(rightframe, text='Reps')
         self.savedlabel = ttk.Label(rightframe, text='')
 
         # Buttons.
-        self.newexercisebutton = ttk.Button(leftframe, text='New exercise.', command=self.newexercise)
-        self.deleteexercisebutton = ttk.Button(leftframe, text='Delete exercise', command=self.deleteexercise)
-        self.setexercisebutton = ttk.Button(rightframe, text='Set exercise', command=self.editexercise)
+        self.newexercisebutton = ttk.Button(leftframe, text='New set.', command=self.newexercise)
+        self.deleteexercisebutton = ttk.Button(leftframe, text='Delete set', command=self.deleteexercise)
+        self.setexercisebutton = ttk.Button(rightframe, text='Set set', command=self.editexercise)
 
         # Menu.
         self.menu = tkinter.Menu(self.editwin)
