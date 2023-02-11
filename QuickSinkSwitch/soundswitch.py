@@ -49,6 +49,7 @@ def loaddevices():
         devicesavefile = pickle.load(file)
         devicelist = devicesavefile.devicelist
         selecteddevice = devicesavefile.selecteddevice
+        changedefaultsink()
         file.close()
     except OSError:
         print('OSError, could not read the devices list.')
