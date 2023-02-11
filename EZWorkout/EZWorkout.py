@@ -605,13 +605,6 @@ def loadworkout(filename):
     loadfile.close()
     currentset.filename = filename
 
-def fart():
-    fartthread = threading.Thread(target=realfart)
-    fartthread.start()
-
-def realfart():
-    os.system('mpg123 worth.mp3')
-
 
 # Variables for getting filepath
 home = os.path.expanduser('~')
