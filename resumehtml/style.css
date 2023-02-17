@@ -1,0 +1,59 @@
+.contact{
+	text-align: center;
+}
+
+.name{
+		font-family: serif;
+		font-size: 200%;
+}
+
+.aboutheader{
+	font-family: serif;
+	font-size: 125%;
+}
+
+.projectbox{
+	background-color: lightblue;
+	padding: 10px;
+	padding-top: 0px;
+	border-style: groove;
+	border-color: darkblue;
+	border-width: 5px;
+	margin: 5px;
+}
+
+.sectionbox{
+	background-color: silver;
+	padding: 10px;
+	padding-bottom: 15px;
+	padding-top: 0px;
+	border-style: double;
+	border-color: gray;
+	border-width: 4px;
+	margin: 15px;
+	margin-bottom: 30px;
+}
+
+.jobbox{
+	background-color: #00441A;
+	padding: 10px;
+	padding-top: 0px;
+	border-color: darkgray;
+	border-width: 5px;
+	border-style: groove;
+	color: white;
+}
+
+.jobtitle{
+	padding-left: 5px;
+}
+
+.animationbox{
+	margin: 10px;
+	background-color: black;
+	border-color: gray;
+	border-style: groove;
+	border-width: 5px;
+	color: darkgreen;
+	text-align: center;
+}
